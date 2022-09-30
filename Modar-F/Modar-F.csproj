@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Modar_F</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoreCLR-NCalc" Version="2.2.110" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Gif.Components">
+      <HintPath>..\NGif-master\Components\bin\Debug\Gif.Components.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
