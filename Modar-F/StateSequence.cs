@@ -22,6 +22,12 @@ namespace Modar_F
             Name = name;
         }
 
+        public StateSequence(string name)
+        {
+            sequence = new List<Scene>();
+            Name = name;
+        }
+
         public void Add(Scene newScene)
         {
             sequence.Add(newScene);

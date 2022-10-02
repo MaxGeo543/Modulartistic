@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="CoreCLR-NCalc" Version="2.2.110" />
+    <PackageReference Include="ScottPlot" Version="4.1.58" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 

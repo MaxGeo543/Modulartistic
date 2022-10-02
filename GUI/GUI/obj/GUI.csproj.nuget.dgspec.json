@@ -116,6 +116,10 @@
               "target": "Package",
               "version": "[2.2.110, )"
             },
+            "ScottPlot": {
+              "target": "Package",
+              "version": "[4.1.58, )"
+            },
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[6.0.0, )"
