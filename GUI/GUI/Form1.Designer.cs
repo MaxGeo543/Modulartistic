@@ -30,7 +30,7 @@
         {
             this.SceneTabs = new System.Windows.Forms.TabControl();
             this.InitState = new System.Windows.Forms.TabPage();
-            this.sceneTabLayout1 = new GUI.SceneTabLayout();
+            this.sceneTabLayout = new GUI.SceneTabLayout();
             this.AddStateButton = new System.Windows.Forms.Button();
             this.RemoveStateButton = new System.Windows.Forms.Button();
             this.RenameStateButton = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.WidthLabel = new System.Windows.Forms.Label();
             this.HeightIn = new System.Windows.Forms.TextBox();
             this.HeightLabel = new System.Windows.Forms.Label();
+            this.process1 = new System.Diagnostics.Process();
             this.SceneTabs.SuspendLayout();
             this.InitState.SuspendLayout();
             this.SuspendLayout();
@@ -60,35 +61,39 @@
             // SceneTabs
             // 
             this.SceneTabs.Controls.Add(this.InitState);
-            this.SceneTabs.Location = new System.Drawing.Point(12, 12);
+            this.SceneTabs.Location = new System.Drawing.Point(14, 16);
+            this.SceneTabs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.SceneTabs.Name = "SceneTabs";
             this.SceneTabs.SelectedIndex = 0;
-            this.SceneTabs.Size = new System.Drawing.Size(705, 318);
+            this.SceneTabs.Size = new System.Drawing.Size(806, 424);
             this.SceneTabs.TabIndex = 0;
             // 
             // InitState
             // 
-            this.InitState.Controls.Add(this.sceneTabLayout1);
-            this.InitState.Location = new System.Drawing.Point(4, 24);
+            this.InitState.Controls.Add(this.sceneTabLayout);
+            this.InitState.Location = new System.Drawing.Point(4, 29);
+            this.InitState.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InitState.Name = "InitState";
-            this.InitState.Size = new System.Drawing.Size(697, 290);
+            this.InitState.Size = new System.Drawing.Size(798, 391);
             this.InitState.TabIndex = 0;
             this.InitState.Text = "State 1";
             this.InitState.Visible = false;
             // 
-            // sceneTabLayout1
+            // sceneTabLayout
             // 
-            this.sceneTabLayout1.BackColor = System.Drawing.SystemColors.Window;
-            this.sceneTabLayout1.Location = new System.Drawing.Point(0, 0);
-            this.sceneTabLayout1.Name = "sceneTabLayout1";
-            this.sceneTabLayout1.Size = new System.Drawing.Size(697, 290);
-            this.sceneTabLayout1.TabIndex = 0;
+            this.sceneTabLayout.BackColor = System.Drawing.SystemColors.Window;
+            this.sceneTabLayout.Location = new System.Drawing.Point(0, 0);
+            this.sceneTabLayout.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.sceneTabLayout.Name = "sceneTabLayout";
+            this.sceneTabLayout.Size = new System.Drawing.Size(797, 387);
+            this.sceneTabLayout.TabIndex = 0;
             // 
             // AddStateButton
             // 
-            this.AddStateButton.Location = new System.Drawing.Point(12, 336);
+            this.AddStateButton.Location = new System.Drawing.Point(14, 448);
+            this.AddStateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddStateButton.Name = "AddStateButton";
-            this.AddStateButton.Size = new System.Drawing.Size(100, 23);
+            this.AddStateButton.Size = new System.Drawing.Size(114, 31);
             this.AddStateButton.TabIndex = 1;
             this.AddStateButton.Text = "Add State";
             this.AddStateButton.UseVisualStyleBackColor = true;
@@ -96,9 +101,10 @@
             // 
             // RemoveStateButton
             // 
-            this.RemoveStateButton.Location = new System.Drawing.Point(264, 337);
+            this.RemoveStateButton.Location = new System.Drawing.Point(302, 449);
+            this.RemoveStateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RemoveStateButton.Name = "RemoveStateButton";
-            this.RemoveStateButton.Size = new System.Drawing.Size(100, 23);
+            this.RemoveStateButton.Size = new System.Drawing.Size(114, 31);
             this.RemoveStateButton.TabIndex = 2;
             this.RemoveStateButton.Text = "Remove State";
             this.RemoveStateButton.UseVisualStyleBackColor = true;
@@ -106,9 +112,10 @@
             // 
             // RenameStateButton
             // 
-            this.RenameStateButton.Location = new System.Drawing.Point(370, 337);
+            this.RenameStateButton.Location = new System.Drawing.Point(423, 449);
+            this.RenameStateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.RenameStateButton.Name = "RenameStateButton";
-            this.RenameStateButton.Size = new System.Drawing.Size(100, 23);
+            this.RenameStateButton.Size = new System.Drawing.Size(114, 31);
             this.RenameStateButton.TabIndex = 3;
             this.RenameStateButton.Text = "Rename State";
             this.RenameStateButton.UseVisualStyleBackColor = true;
@@ -116,17 +123,19 @@
             // 
             // NewSceneNameIn
             // 
-            this.NewSceneNameIn.Location = new System.Drawing.Point(118, 337);
+            this.NewSceneNameIn.Location = new System.Drawing.Point(135, 449);
+            this.NewSceneNameIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewSceneNameIn.Name = "NewSceneNameIn";
-            this.NewSceneNameIn.Size = new System.Drawing.Size(140, 23);
+            this.NewSceneNameIn.Size = new System.Drawing.Size(159, 27);
             this.NewSceneNameIn.TabIndex = 4;
             this.NewSceneNameIn.Text = "State 2";
             // 
             // StateMoveRightButton
             // 
-            this.StateMoveRightButton.Location = new System.Drawing.Point(680, 337);
+            this.StateMoveRightButton.Location = new System.Drawing.Point(777, 449);
+            this.StateMoveRightButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StateMoveRightButton.Name = "StateMoveRightButton";
-            this.StateMoveRightButton.Size = new System.Drawing.Size(33, 23);
+            this.StateMoveRightButton.Size = new System.Drawing.Size(38, 31);
             this.StateMoveRightButton.TabIndex = 5;
             this.StateMoveRightButton.Text = ">>";
             this.StateMoveRightButton.UseVisualStyleBackColor = true;
@@ -134,9 +143,10 @@
             // 
             // StateMoveLeftButton
             // 
-            this.StateMoveLeftButton.Location = new System.Drawing.Point(577, 337);
+            this.StateMoveLeftButton.Location = new System.Drawing.Point(659, 449);
+            this.StateMoveLeftButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StateMoveLeftButton.Name = "StateMoveLeftButton";
-            this.StateMoveLeftButton.Size = new System.Drawing.Size(33, 23);
+            this.StateMoveLeftButton.Size = new System.Drawing.Size(38, 31);
             this.StateMoveLeftButton.TabIndex = 6;
             this.StateMoveLeftButton.Text = "<<";
             this.StateMoveLeftButton.UseVisualStyleBackColor = true;
@@ -145,24 +155,26 @@
             // PathLabel
             // 
             this.PathLabel.AutoSize = true;
-            this.PathLabel.Location = new System.Drawing.Point(12, 483);
+            this.PathLabel.Location = new System.Drawing.Point(14, 644);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(72, 15);
+            this.PathLabel.Size = new System.Drawing.Size(87, 20);
             this.PathLabel.TabIndex = 7;
             this.PathLabel.Text = "Output Path";
             // 
             // PathIn
             // 
-            this.PathIn.Location = new System.Drawing.Point(118, 478);
+            this.PathIn.Location = new System.Drawing.Point(135, 637);
+            this.PathIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PathIn.Name = "PathIn";
-            this.PathIn.Size = new System.Drawing.Size(524, 23);
+            this.PathIn.Size = new System.Drawing.Size(598, 27);
             this.PathIn.TabIndex = 8;
             // 
             // GenerateButton
             // 
-            this.GenerateButton.Location = new System.Drawing.Point(648, 478);
+            this.GenerateButton.Location = new System.Drawing.Point(741, 637);
+            this.GenerateButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(75, 22);
+            this.GenerateButton.Size = new System.Drawing.Size(86, 29);
             this.GenerateButton.TabIndex = 9;
             this.GenerateButton.Text = "Generate";
             this.GenerateButton.UseVisualStyleBackColor = true;
@@ -171,9 +183,10 @@
             // NoAnimationCheckBox
             // 
             this.NoAnimationCheckBox.AutoSize = true;
-            this.NoAnimationCheckBox.Location = new System.Drawing.Point(577, 391);
+            this.NoAnimationCheckBox.Location = new System.Drawing.Point(659, 521);
+            this.NoAnimationCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NoAnimationCheckBox.Name = "NoAnimationCheckBox";
-            this.NoAnimationCheckBox.Size = new System.Drawing.Size(101, 19);
+            this.NoAnimationCheckBox.Size = new System.Drawing.Size(124, 24);
             this.NoAnimationCheckBox.TabIndex = 11;
             this.NoAnimationCheckBox.Text = "No Animation";
             this.NoAnimationCheckBox.UseVisualStyleBackColor = true;
@@ -181,106 +194,125 @@
             // AnimationNameLabel
             // 
             this.AnimationNameLabel.AutoSize = true;
-            this.AnimationNameLabel.Location = new System.Drawing.Point(12, 423);
+            this.AnimationNameLabel.Location = new System.Drawing.Point(14, 564);
             this.AnimationNameLabel.Name = "AnimationNameLabel";
-            this.AnimationNameLabel.Size = new System.Drawing.Size(98, 15);
+            this.AnimationNameLabel.Size = new System.Drawing.Size(122, 20);
             this.AnimationNameLabel.TabIndex = 13;
             this.AnimationNameLabel.Text = "Animation Name";
             // 
             // AnimationNameIn
             // 
-            this.AnimationNameIn.Location = new System.Drawing.Point(118, 419);
+            this.AnimationNameIn.Location = new System.Drawing.Point(135, 559);
+            this.AnimationNameIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AnimationNameIn.Name = "AnimationNameIn";
-            this.AnimationNameIn.Size = new System.Drawing.Size(524, 23);
+            this.AnimationNameIn.Size = new System.Drawing.Size(598, 27);
             this.AnimationNameIn.TabIndex = 14;
             // 
             // FunctionLabel
             // 
             this.FunctionLabel.AutoSize = true;
-            this.FunctionLabel.Location = new System.Drawing.Point(12, 453);
+            this.FunctionLabel.Location = new System.Drawing.Point(14, 604);
             this.FunctionLabel.Name = "FunctionLabel";
-            this.FunctionLabel.Size = new System.Drawing.Size(54, 15);
+            this.FunctionLabel.Size = new System.Drawing.Size(65, 20);
             this.FunctionLabel.TabIndex = 15;
             this.FunctionLabel.Text = "Function";
             // 
             // FunctionIn
             // 
-            this.FunctionIn.Location = new System.Drawing.Point(118, 449);
+            this.FunctionIn.Location = new System.Drawing.Point(135, 599);
+            this.FunctionIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FunctionIn.Name = "FunctionIn";
-            this.FunctionIn.Size = new System.Drawing.Size(524, 23);
+            this.FunctionIn.Size = new System.Drawing.Size(598, 27);
             this.FunctionIn.TabIndex = 16;
+            this.FunctionIn.Text = "x*y";
             // 
             // FramerateLabel
             // 
             this.FramerateLabel.AutoSize = true;
-            this.FramerateLabel.Location = new System.Drawing.Point(405, 393);
+            this.FramerateLabel.Location = new System.Drawing.Point(463, 524);
             this.FramerateLabel.Name = "FramerateLabel";
-            this.FramerateLabel.Size = new System.Drawing.Size(60, 15);
+            this.FramerateLabel.Size = new System.Drawing.Size(76, 20);
             this.FramerateLabel.TabIndex = 17;
             this.FramerateLabel.Text = "Framerate";
             // 
             // FramerateIn
             // 
-            this.FramerateIn.Location = new System.Drawing.Point(471, 389);
+            this.FramerateIn.Location = new System.Drawing.Point(538, 519);
+            this.FramerateIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FramerateIn.Name = "FramerateIn";
-            this.FramerateIn.Size = new System.Drawing.Size(52, 23);
+            this.FramerateIn.Size = new System.Drawing.Size(59, 27);
             this.FramerateIn.TabIndex = 18;
             // 
             // MoveLabel
             // 
             this.MoveLabel.AutoSize = true;
-            this.MoveLabel.Location = new System.Drawing.Point(613, 341);
+            this.MoveLabel.Location = new System.Drawing.Point(701, 455);
             this.MoveLabel.Name = "MoveLabel";
-            this.MoveLabel.Size = new System.Drawing.Size(66, 15);
+            this.MoveLabel.Size = new System.Drawing.Size(84, 20);
             this.MoveLabel.TabIndex = 19;
             this.MoveLabel.Text = "Move State";
             // 
             // DebugLabel
             // 
             this.DebugLabel.AutoSize = true;
-            this.DebugLabel.Location = new System.Drawing.Point(12, 518);
+            this.DebugLabel.Location = new System.Drawing.Point(14, 691);
             this.DebugLabel.Name = "DebugLabel";
-            this.DebugLabel.Size = new System.Drawing.Size(38, 15);
+            this.DebugLabel.Size = new System.Drawing.Size(50, 20);
             this.DebugLabel.TabIndex = 20;
             this.DebugLabel.Text = "label1";
             // 
             // WidthIn
             // 
-            this.WidthIn.Location = new System.Drawing.Point(164, 389);
+            this.WidthIn.Location = new System.Drawing.Point(187, 519);
+            this.WidthIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.WidthIn.Name = "WidthIn";
-            this.WidthIn.Size = new System.Drawing.Size(60, 23);
+            this.WidthIn.Size = new System.Drawing.Size(68, 27);
             this.WidthIn.TabIndex = 22;
+            this.WidthIn.Text = "500";
             // 
             // WidthLabel
             // 
             this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Location = new System.Drawing.Point(119, 393);
+            this.WidthLabel.Location = new System.Drawing.Point(136, 524);
             this.WidthLabel.Name = "WidthLabel";
-            this.WidthLabel.Size = new System.Drawing.Size(39, 15);
+            this.WidthLabel.Size = new System.Drawing.Size(49, 20);
             this.WidthLabel.TabIndex = 21;
             this.WidthLabel.Text = "Width";
             // 
             // HeightIn
             // 
-            this.HeightIn.Location = new System.Drawing.Point(279, 389);
+            this.HeightIn.Location = new System.Drawing.Point(319, 519);
+            this.HeightIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.HeightIn.Name = "HeightIn";
-            this.HeightIn.Size = new System.Drawing.Size(60, 23);
+            this.HeightIn.Size = new System.Drawing.Size(68, 27);
             this.HeightIn.TabIndex = 23;
+            this.HeightIn.Text = "500";
             // 
             // HeightLabel
             // 
             this.HeightLabel.AutoSize = true;
-            this.HeightLabel.Location = new System.Drawing.Point(230, 393);
+            this.HeightLabel.Location = new System.Drawing.Point(263, 524);
             this.HeightLabel.Name = "HeightLabel";
-            this.HeightLabel.Size = new System.Drawing.Size(43, 15);
+            this.HeightLabel.Size = new System.Drawing.Size(54, 20);
             this.HeightLabel.TabIndex = 24;
             this.HeightLabel.Text = "Height";
             // 
+            // process1
+            // 
+            this.process1.StartInfo.Domain = "";
+            this.process1.StartInfo.LoadUserProfile = false;
+            this.process1.StartInfo.Password = null;
+            this.process1.StartInfo.StandardErrorEncoding = null;
+            this.process1.StartInfo.StandardInputEncoding = null;
+            this.process1.StartInfo.StandardOutputEncoding = null;
+            this.process1.StartInfo.UserName = "";
+            this.process1.SynchronizingObject = this;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(735, 550);
+            this.ClientSize = new System.Drawing.Size(840, 733);
             this.Controls.Add(this.HeightLabel);
             this.Controls.Add(this.HeightIn);
             this.Controls.Add(this.WidthIn);
@@ -305,6 +337,7 @@
             this.Controls.Add(this.AddStateButton);
             this.Controls.Add(this.SceneTabs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Modulartistic";
             this.SceneTabs.ResumeLayout(false);
@@ -335,11 +368,12 @@
         private System.Windows.Forms.Label FramerateLabel;
         private System.Windows.Forms.TextBox FramerateIn;
         private System.Windows.Forms.Label MoveLabel;
-        private SceneTabLayout sceneTabLayout1;
+        private SceneTabLayout sceneTabLayout;
         private System.Windows.Forms.Label DebugLabel;
         private System.Windows.Forms.TextBox WidthIn;
         private System.Windows.Forms.Label WidthLabel;
         private System.Windows.Forms.TextBox HeightIn;
         private System.Windows.Forms.Label HeightLabel;
+        private System.Diagnostics.Process process1;
     }
 }

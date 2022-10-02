@@ -13,6 +13,26 @@ namespace GUI
         public Form1()
         {
             InitializeComponent();
+            this.Controls.Find("ModNumIn", true)[0].Text = "500";
+            this.Controls.Find("ModLimLowIn", true)[0].Text = "0";
+            this.Controls.Find("ModLimUpIn", true)[0].Text = "500";
+            this.Controls.Find("X0In", true)[0].Text = "0";
+            this.Controls.Find("Y0In", true)[0].Text = "0";
+            this.Controls.Find("XFactIn", true)[0].Text = "1";
+            this.Controls.Find("YFactIn", true)[0].Text = "1";
+            this.Controls.Find("RotationIn", true)[0].Text = "0";
+            this.Controls.Find("ColMinIn", true)[0].Text = "0";
+            this.Controls.Find("ColSatIn", true)[0].Text = "1";
+            this.Controls.Find("ColValIn", true)[0].Text = "1";
+            this.Controls.Find("ColAlphaIn", true)[0].Text = "1";
+            this.Controls.Find("InvalColAIn", true)[0].Text = "0";
+            this.Controls.Find("InvalColRIn", true)[0].Text = "0";
+            this.Controls.Find("InvalColGIn", true)[0].Text = "0";
+            this.Controls.Find("InvalColBIn", true)[0].Text = "0";
+            this.Controls.Find("ColFactRIn", true)[0].Text = "1";
+            this.Controls.Find("ColFactGIn", true)[0].Text = "1";
+            this.Controls.Find("ColFactBIn", true)[0].Text = "1";
+            this.Controls.Find("DurIn", true)[0].Text = "0";
         }
 
         //Adds a Tab to the States Tab Control with the Add-Button
@@ -21,7 +41,7 @@ namespace GUI
             //Initializing the new Tab
             TabPage newTab = new TabPage();
             newTab.Text = NewSceneNameIn.Text;
-            newTab.Controls.Add(new SceneTabLayout());
+            newTab.Controls.Add(new SceneTabLayout("StateTabLayout"));
 
             //Adding the tab
             SceneTabs.TabPages.Add(newTab);
@@ -181,7 +201,7 @@ namespace GUI
                 string pathOut = this.PathIn.Text;
 
                 //Create StateSequence
-                StateSequence stateSequence = new StateSequence();
+                StateSequence stateSequence = new StateSequence(this.AnimationNameIn.Text);
 
                 DebugLabel.Text = SceneTabs.SelectedTab.Controls.Find("ModNumIn", true)[0].Text;
                 //Create the image for every State
@@ -225,6 +245,9 @@ namespace GUI
                         }
                     }
 
+                    //Easing
+                    Easing easing = (Easing)t.Controls.Find("EasingIn", true).OfType<ComboBox>().First().SelectedItem; //StateTabLayout.Find("EasingIn", true)[0].SelectedItem;
+
                     //Length
                     double length = Double.Parse(t.Controls.Find("DurIn", true)[0].Text);
 
@@ -251,7 +274,7 @@ namespace GUI
                         name
                         );
 
-                    Scene scene = new Scene(state, length, Easing.SineIn());
+                    Scene scene = new Scene(state, length, easing);
                     stateSequence.Add(scene);
                 }
 

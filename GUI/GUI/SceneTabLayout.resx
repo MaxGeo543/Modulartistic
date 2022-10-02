@@ -57,4 +57,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>35, 11</value>
+  </metadata>
+  <data name="ColFactLabel.ToolTip" xml:space="preserve">
+    <value>Red, Blue and Green values of every pixel will be multiplied by this value. 
+Useful for filtering out a single color. For example 1,0,0 will only show the red values of pixels. 
+Can be any non negative real number. Note that actual values will be less or equal to one. </value>
+  </data>
+  <data name="InvalColLabel.ToolTip" xml:space="preserve">
+    <value>The color pixels will have in case of Errors like division by zero or if it's value 
+is outside the Modulus Limits in ARGB format (Alpha, Red, Green, Blue)
+All values must be in range from zero to one. </value>
+  </data>
 </root>

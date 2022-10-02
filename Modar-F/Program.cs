@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScottPlot.Drawing.Colormaps;
+using System;
 using System.Collections.Generic;
 
 namespace Modar_F
@@ -7,21 +8,18 @@ namespace Modar_F
     {
         static void Main(string[] args)
         {
-            State s1 = new State(500, 0, 500, 0, 0, 1, 1, 0, 0, 1, 1, 1, (0, 0, 0, 0), (1, 1, 1), new List<double> { 0 }, "State1");
-            State s2 = new State(500, 500, 500, 0, 0, 1, 1, 0, 0, 1, 1, 1, (0, 0, 0, 0), (1, 1, 1), new List<double> { 0 }, "State2");
-            
-            Easing easing = Easing.SineIn();
-            Scene sc1 = new Scene(s1, 5, easing);
-            Scene sc2 = new Scene(s2, 5, easing);
-            
-            StateSequence ss = new StateSequence();
-            ss.Add(sc1);
-            ss.Add(sc2);
-            
-            Func<double, double, List<double>, double> function = (x, y, p) => Functions.Product(x, y);
+            Easing easing = Easing.BounceOut();
 
-            ss.GenerateAnimation(new System.Drawing.Size(500, 500), function, 12, "");
-            //took 1:21 for a 10 sec gif. thats fine-ish
+            List<double> dataY = new List<double>();
+            int max = 1000;
+            for (int i = 0; i <= max ; i++)
+            {
+                dataY.Add(easing.Ease(0,1,i,max));
+            }
+            var plt = new ScottPlot.Plot();
+            //plt.AddScatter(dataX, dataY);
+            plt.AddSignal(dataY.ToArray(), sampleRate: 48_000);
+            plt.SaveFig(easing.ToString() + ".png");
         }
     }
 }
