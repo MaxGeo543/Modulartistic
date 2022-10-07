@@ -1,0 +1,14 @@
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.exe
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.deps.json
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.runtimeconfig.json
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.runtimeconfig.dev.json
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.dll
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\bin\Debug\netcoreapp3.1\BasedNumber.pdb
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.csproj.AssemblyReference.cache
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.AssemblyInfoInputs.cache
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.AssemblyInfo.cs
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.csproj.CoreCompileInputs.cache
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.dll
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.pdb
+C:\Users\agmge\source\repos\BasedNumber\BasedNumber\obj\Debug\netcoreapp3.1\BasedNumber.genruntimeconfig.cache
