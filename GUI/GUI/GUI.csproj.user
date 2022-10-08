@@ -4,6 +4,9 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="LoadingPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SceneTabLayout.cs">
       <SubType>UserControl</SubType>
     </Compile>

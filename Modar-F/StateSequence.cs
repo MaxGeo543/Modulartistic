@@ -53,8 +53,6 @@ namespace Modar_F
             get => sequence[idx % Count];
         }
 
-
-
         public void GenerateScene(int idx, Size size, Func<double, double, List<double>, double> func, int framerate, string path_out = @"")
         {
             //Defining the start and endstates

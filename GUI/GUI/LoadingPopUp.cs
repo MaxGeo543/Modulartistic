@@ -1,0 +1,82 @@
+﻿using Modar_F;
+using NCalc.Domain;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Security.Policy;
+using System.Text;
+using System.Windows.Forms;
+
+namespace GUI
+{
+    public partial class LoadingPopUp : Form
+    {
+        public LoadingPopUp(StateSequence stateSequence, Size size, Func<double, double, List<double>, double> function, int framerate, string pathOut)
+        {
+            InitializeComponent();
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void cancelAsyncButton_Click(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.WorkerSupportsCancellation == true)
+            {
+                // Cancel the asynchronous operation.
+                backgroundWorker1.CancelAsync();
+            }
+        }
+
+        // This event handler is where the time-consuming work is done.
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    // Perform a time consuming operation and report progress.
+                    System.Threading.Thread.Sleep(500);
+                    worker.ReportProgress(i * 10);
+                }
+            }
+        }
+
+        // This event handler updates the progress.
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            resultLabel.Text = (e.ProgressPercentage.ToString() + "%");
+        }
+
+        // This event handler deals with the results of the background operation.
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                resultLabel.Text = "Canceled!";
+            }
+            else if (e.Error != null)
+            {
+                resultLabel.Text = "Error: " + e.Error.Message;
+            }
+            else
+            {
+                resultLabel.Text = "Done!";
+            }
+        }
+
+        private void LoadingPopUp_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

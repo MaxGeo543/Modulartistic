@@ -5,6 +5,7 @@ using Modar_F;
 using System.Collections.Generic;
 using System.Drawing;
 using NCalc;
+using System.ComponentModel;
 
 namespace GUI
 {
@@ -278,6 +279,9 @@ namespace GUI
                     stateSequence.Add(scene);
                 }
 
+                
+                LoadingPopUp f = new LoadingPopUp();
+                f.ShowDialog(stateSequence, size, function, framerate, pathOut);
                 stateSequence.GenerateAnimation(size, function, framerate, pathOut);
             }
         }
