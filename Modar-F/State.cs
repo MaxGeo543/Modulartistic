@@ -218,7 +218,7 @@ namespace Modar_F
                 {
                     i++;
                 }
-                path = path + "_" + i + @".png";
+                path = path + "_" + i;
             }
             //save the image
             image.Save(path + @".png", System.Drawing.Imaging.ImageFormat.Png);
