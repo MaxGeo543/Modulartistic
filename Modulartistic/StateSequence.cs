@@ -7,6 +7,10 @@ using System.Diagnostics;
 using AnimatedGif;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using FFMpegCore;
+using FFMpegCore.Pipes;
+using FFMpegCore.Extensions.System.Drawing.Common;
+using FFMpegCore.Enums;
 
 namespace Modulartistic
 {
@@ -221,6 +225,62 @@ namespace Modulartistic
                     gif.AddFrame(img, delay: -1, quality: GifQuality.Bit8);
                 }
             }
+        }
+        
+
+
+        /*
+         * This is new. Has to be adjusted to new State Structure.
+         * This enumerates all Frames without saveing them to images first.
+         * This will then be piped into ffmpeg to create a video (mp4)
+         */
+        private IEnumerable<IVideoFrame> EnumerateFrames(GenerationArgs args)
+        {
+            // parses GenerationArgs
+            uint framerate = args.Framerate;
+            Size size = new Size(args.Size[0], args.Size[1]);
+            Function func = new Function(args.Function);
+
+            // loops through the scenes
+            for (int i = 0; i < Count; i++)
+            {
+                Scene current = Scenes[i];
+                Scene next = Scenes[(i + 1) % Scenes.Count];
+
+                // iterate over all Frames and create the corresponding images
+                int frames = (int)(current.Length * framerate);
+                for (int j = 0; j < frames; j++)
+                {
+                    State frameState = new State(current.State, next.State, current.Easing, j, frames);
+                    
+                    // Get Bitmap Should only take the generation args, and do the rest itself tbh
+                    yield return new BitmapVideoFrameWrapper(frameState.GetBitmap(size, func));
+                }
+            }
+        }
+        private async void CreateMp4(GenerationArgs args, string path_out)
+        {
+            // Creating filename and path, checking if directory exists
+            string path = path_out == "" ? AppDomain.CurrentDomain.BaseDirectory + Path.DirectorySeparatorChar + @"Output" : path_out;
+            if (!Directory.Exists(path)) { throw new DirectoryNotFoundException("The Directory " + path + " was not found."); }
+            path += Path.DirectorySeparatorChar + (Name == "" ? "Animation" : Name);
+
+            // Validate and Create the Output Path
+            path = Modulartistic.Helper.ValidFileName(path);
+            Directory.CreateDirectory(path);
+
+
+            var videoFramesSource = new RawVideoPipeSource(EnumerateFrames(args))
+            {
+                FrameRate = 30 //set source frame rate
+            };
+            
+            
+            await FFMpegArguments
+                .FromPipeInput(videoFramesSource)
+                .OutputToFile(path+@".mp4", false, options => options
+                    .WithVideoCodec(VideoCodec.LibVpx))
+                .ProcessAsynchronously();
         }
         #endregion
     }
