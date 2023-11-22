@@ -149,6 +149,7 @@
   },
   "active": "6f6d8024cb4c8c6d",
   "lastOpenFiles": [
+    "Modulartistic/StateSequence.cs",
     "documentation/img/state_example_3.png",
     "documentation/img/state_example_4.png",
     "documentation/examples.md",
@@ -170,7 +171,6 @@
     "Modulartistic/bin/Debug/netcoreapp3.1/output/GenerationData_78.json",
     "Modulartistic/bin/Debug/netcoreapp3.1/output/pascals_68.png",
     "Modulartistic/bin/Debug/netcoreapp3.1/output/GenerationData_77.json",
-    "Modulartistic/bin/Debug/netcoreapp3.1/output/pascals_67.png",
     "Modulartistic/bin/Debug/netcoreapp3.1/output/GenerationData_76.json",
     "documentation/function definition.md",
     "documentation/json format.md",

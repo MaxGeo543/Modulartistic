@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # JSON Format
 To generate images a ```json``` file containing information about the image(s) or animation(s) has to be specified on the command line. This page will introduce you to the valid syntax and structure of these ```json``` files. 
 
@@ -8,6 +9,17 @@ The root element of the ```json``` will always be a list containing several obje
 	"object1", 
 	"object2", 
 	"..."
+=======
+To generate images a ```json``` file containing information about the image(s) or animation(s) has to be specified on the command line. This page will introduce you to the valid syntax and structure of these ```json``` files. 
+
+# Underlying structure
+The root element of the ```json``` will always be a list containing several objects that are linearly processed. 
+```json
+[
+	object1, 
+	object2, 
+	object3
+>>>>>>> remotes/origin/master
 ]
 ```
 
@@ -27,7 +39,11 @@ An object (in general for ```json``` files) consists of name/value pairs. An obj
 
 The different object types have differently named properties though, so the following chapters will guide you through what properties can be specified for each object type. 
 
+<<<<<<< HEAD
 ## GenerationArgs
+=======
+# GenerationArgs
+>>>>>>> remotes/origin/master
 **GenerationArgs** contains global information about images and animations like image Size. The values in a GenerationArgs object will be applied to each image until a new GenerationArgs object appears in the list. 
 GenerationArgs objects can have the following properties specified: 
 
@@ -35,6 +51,7 @@ GenerationArgs objects can have the following properties specified:
 | ------------------------ | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------- |
 | ```Size```               | ```[int,int]``` | ```[500, 500]``` | The Size in pixels that images/animations will have                                                        |
 | ```Framerate```          | ```int```       | ```12```         | The Framerate in Frames per Second for animations                                                          |
+<<<<<<< HEAD
 | ```Circular```           | ```bool```      | ```true```      | If true, makes variable values "wrap around", such that their max value = min value                        |
 | ```InvalidColorGlobal```     | ```bool```      | ```false```       | If true, only one function has to return an invalid result for all Color values to use their invalid value |
 | ```UseRGB```             | ```bool```      | ```false```      | If true, uses RGB instead of HSV values. Constants and Functions of the other color type will be ignored  |
@@ -48,12 +65,29 @@ GenerationArgs objects can have the following properties specified:
 | ```AddOns```             | ```list```      | ```[]```                 | AddOns/Plugins as a list of ```.dll``` files                                                                                                          |
 
 ## State
+=======
+| ```Circular```           | ```bool```      | ```false```      | If true, makes variable values "wrap around", such that their max value = min value                        |
+| ```InvalColGlobal```     | ```bool```      | ```true```       | If true, only one function has to return an invalid result for all Color values to use their invalid value |
+| ```UseRGB```             | ```bool```      | ```false```      | If true, uses RGB instead of HSV values. Constants and Functions of the other color type will be ignored  |
+| ```HueFunction```        | ```string```    |                  | The function by which hue of each pixel is calculated                                                                                                           |
+| ```SaturationFuntion```  | ```string```    |                  | The function by which saturation of each pixel is calculated                                                                                                           |
+| ```BrightnessFunction``` | ```string```    |                  | The function by which brightness of each pixel is calculated                                                                                                           |
+| ```RedFunction```        | ```string```    |                  | The function by which red of each pixel is calculated                                                                                                           |
+| ```GreenFunction```      | ```string```    |                  | The function by which green of each pixel is calculated                                                                                                           |
+| ```BlueFunction```       | ```string```    |                  | The function by which blue of each pixel is calculated                                                                                                           |
+| ```AlphaFunction```      | ```string```    |                  | The function by which alpha (transparency) of each pixel is calculated                                                                                                           |
+| ```AddOns```             | ```list```      |                  | AddOns/Plugins as a list of ```.dll``` files                                                                                                          |
+
+
+# State
+>>>>>>> remotes/origin/master
 **State** objects represent a single image that is generated. It contains all the data not specified in GenerationArgs that's needed to generate an image via the algorithm. 
 State objects support the following Property names: 
 
 | name                         | value type   | default value                        | Description                                                                                                   |
 | ---------------------------- | ------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
 | ```Name```                   | ```string``` | ```"State"```                        | The name of the state which will also be the filename of the image                                            |
+<<<<<<< HEAD
 | ```X0```                     | ```double``` | ```0```                              | The X Coordinate in the middle of the image                                                                   |
 | ```Y0```                     | ```double``` | ```0```                              | The Y Coordinate in the middle of the image                                                                   |
 | ```XRotationCenter```             | ```double``` | ```0```                              | The X Coordinate around which it rotates                                                                      |
@@ -142,3 +176,64 @@ Like with StateSequences these objects also male use of another types this time 
 For more clarification about what is meant by Attack, Decay, Sustain and Release read about [envelope in music](https://en.wikipedia.org/wiki/Envelope_(music)). 
 
 Creating StateTimelines by hand is rather uninteresting in my opinion. When adding this I had a different purpose in mind: creating animations as visualization of [midi files](https://en.wikipedia.org/wiki/MIDI#Standard_files). For this purpose there is an additional page where you can read about how to do this using [StateTimelineTemplate](<state timeline template>). 
+=======
+| ```Mod```                    | ```double``` | ```500```                            | All functions are taken modulo this number                                                                    |
+| ```ModLimLow```              | ```double``` | ```0```                              | If the result of the modulo is outside of the range ModLimLow-ModLimUp, the result will be treated as invalid |
+| ```ModLimUp```               | ```double``` | ```500```                            | If ModLimUp < ModLimLow -> everything that is INSIDE the range ModLimLow-ModLimUp will be treated as invalid  |
+| ```X0```                     | ```double``` | ```0```                              | The X Coordinate in the middle of the image                                                                   |
+| ```Y0```                     | ```double``` | ```0```                              | The Y Coordinate in the middle of the image                                                                   |
+| ```XFactor```                | ```double``` | ```1```                              | All X Values will be multiplied by this                                                                       |
+| ```YFactor```                | ```double``` | ```1```                              | All Y Values will be multiplied by this                                                                       |
+| ```XRotCenter```             | ```double``` | ```0```                              | The X Coordinate around which it rotates                                                                      |
+| ```YRotCenter```             | ```double``` | ```0```                              | The Y Coordinate around which it rotates                                                                      |
+| ```Rotation```               | ```double``` | ```0```                              | The rotation angle in degrees                                                                                 |
+| ```ColorHue```               | ```double``` | ```0```                              | The Constant Hue or offset                                                                                    |
+| ```InvalidColorHue```        | ```double``` | ```0```                              | The Invalid Hue                                                                                                              |
+| ```ColorSaturation```        | ```double``` | ```0```                              | The Constant Saturation or offset                                                                                                              |
+| ```InvalidColorSaturation``` | ```double``` | ```0```                              | The Invalid Saturation                                                                                                              |
+| ```ColorValue```             | ```double``` | ```0```                              | The Constant Value or offset                                                                                                              |
+| ```InvalidColorValue```      | ```double``` | ```0```                              | The Invalid Value                                                                                                              |
+| ```ColorRed```               | ```double``` | ```0```                              | The Constant Red or offset                                                                                                              |
+| ```InvalidColorRed```        | ```double``` | ```0```                              | The Invalid Red                                                                                                              |
+| ```ColorGreen```             | ```double``` | ```0```                              | The Constant Green or offset                                                                                                              |
+| ```InvalidColorGreen```      | ```double``` | ```0```                              | The Invalid Green                                                                                                              |
+| ```ColorBlue```              | ```double``` | ```0```                              | The Constant Blue or offset                                                                                                              |
+| ```InvalidColorBlue```       | ```double``` | ```0```                              | The Invalid Blue                                                                                                              |
+| ```ColorAlpha```             | ```double``` | ```0```                              | The Constant Alpha or offset                                                                                                              |
+| ```InvalidColorAlpha```      | ```double``` | ```1```                              | The Invalid Alpha                                                                                                              |
+| ```Parameters```                   | ```list```   | ```[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]``` | The parameters i0-i9 (i0=i, i1=j)                                                                                                              |
+
+
+
+
+
+# StateSequence
+A **StateSequence** object is one strategy to create animations. It contains a list of ```Sequence``` objects that are simply a State, an Easing Function and a length. It then creates an animation easing between consecutive Scenes (or rather their states) for the specified length. 
+The StateSequence object therefore is relatively simple: 
+
+```json
+{
+	"Name": ...,
+	"Scenes": [
+		scene1,
+		scene2,
+		scene3,
+		...
+	]
+}
+```
+
+But as you can see there is another object used here called ```scene```. Scenes have the following Property Names: 
+
+| name             | value type         | default value                 | Description                                                   |
+| ---------------- | ------------------ | ----------------------------- | ------------------------------------------------------------- |
+| ```State```      | ```state object``` | State with all default values | The state between which is animated, can be seen as keyframes |
+| ```Length```     | ```double```       | ```3```                       | The length of animating between this and the next scene       |
+| ```EasingType``` | ```string```       | ```"Linear"```                              | The easing function of the animation                                                              |
+
+Supported EasingTypes are currently: 
+- Linear
+- SineIn
+- SineOut
+- SineInOut
+>>>>>>> remotes/origin/master
